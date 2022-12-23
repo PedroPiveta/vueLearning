@@ -29,7 +29,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
 header {
   line-height: 1.5;
 }
