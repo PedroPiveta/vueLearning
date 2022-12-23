@@ -1,21 +1,23 @@
 <script setup>
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
+  
 </script>
 
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-    </div>
-  </header>
-
-  <main>
-    <TheWelcome />
-  </main>
+  <h1>{{title}}</h1>
+  <input type="text" ref="name">
+  <button>Click me</button>
 </template>
+
+<script>
+export default {
+  name: 'App',
+  data(){
+    return {
+      title: "My first Vue App :)"
+    }
+  }
+}
+</script>
 
 <style scoped>
 header {
@@ -25,6 +27,12 @@ header {
 .logo {
   display: block;
   margin: 0 auto 2rem;
+}
+
+h1{
+  border-bottom: 1px solid #ddd;
+  display: inline-block;
+  padding-bottom: 10px;
 }
 
 @media (min-width: 1024px) {
