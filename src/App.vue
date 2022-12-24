@@ -5,9 +5,26 @@
   <h1>{{ title }}</h1>
   <p>Welcome...</p>
   <div v-if="showModal">
-    <Modal :header="header" :text="text"  theme="sale" @close="toggleModal"/>
+    <Modal theme="sale" @close="toggleModal">
+      <template v-slot:links>
+        <a href="#">Sign up now</a>
+        <a href="#">More info</a>
+      </template>
+      <h1>Ninja Giveaway!</h1>
+      <p>Grab your ninja swag for half price!</p>
+
+    </Modal>
   </div>
+
+  <div v-if="showModalTwo">
+    <Modal @close="toggleModalTwo">
+      <h1>Sign up to the newsletter</h1>
+      <p>For updates and promo codes</p>
+    </Modal>
+  </div>
+  
   <button @click.alt="toggleModal">Open modal (alt)</button>
+  <button @click="toggleModalTwo">Open modal two</button>
 </template>
 
 <script>
@@ -19,9 +36,8 @@ export default {
   data(){
     return {
       title: "My first Vue App :)",
-      header: "Sign up for the Giveaway!",
-      text: "Grab your ninja swag for half the price",
-      showModal: false
+      showModal: false,
+      showModalTwo: false,
     }
   },
   methods: {
@@ -32,6 +48,9 @@ export default {
     },
     toggleModal(){
       this.showModal = !this.showModal
+    },
+    toggleModalTwo(){
+      this.showModalTwo = !this.showModalTwo
     }
   }
 }
@@ -40,10 +59,7 @@ export default {
 <style>
 #app{
   font-family: Arial, Helvetica, sans-serif;
-}
-
-header {
-  line-height: 1.5;
+  text-align: center;
 }
 
 .logo {
@@ -57,21 +73,4 @@ h1{
   padding-bottom: 10px;
 }
 
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-}
 </style>
